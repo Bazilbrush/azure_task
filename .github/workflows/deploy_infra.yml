@@ -25,7 +25,7 @@ jobs:
         with:
             tfpath: infra
             backend-platform: azure
-            TF_ENV: integration
+            TF_ENV: test
             AZ_RG_NAME: backend
             AZ_STORAGE_ACC: backendthni7
             AZ_STORAGE_CONTAINER: backend
@@ -44,7 +44,7 @@ jobs:
         with:
             tfpath: infra
             backend-platform: azure
-            TF_ENV: integration
+            TF_ENV: test
             AZ_RG_NAME: backend
             AZ_STORAGE_ACC: backendthni7
             AZ_STORAGE_CONTAINER: backend
@@ -62,7 +62,7 @@ jobs:
         with:
             tfpath: infra
             backend-platform: azure
-            TF_ENV: integration
+            TF_ENV: test
             AZ_RG_NAME: backend
             AZ_STORAGE_ACC: backendthni7
             AZ_STORAGE_CONTAINER: backend
@@ -80,7 +80,7 @@ jobs:
         with:
             tfpath: infra
             backend-platform: azure
-            TF_ENV: integration
+            TF_ENV: test
             AZ_RG_NAME: backend
             AZ_STORAGE_ACC: backendthni7
             AZ_STORAGE_CONTAINER: backend
