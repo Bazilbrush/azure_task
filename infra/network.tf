@@ -57,7 +57,7 @@ resource "azurerm_network_security_rule" "allow_http_https_out" {
 }
 resource "azurerm_network_security_rule" "allow_dns_out" {
   name                        = "allow_outbound"
-  priority                    = 100
+  priority                    = 99
   direction                   = "Outbound"
   access                      = "Allow"
   protocol                    = "Udp"
