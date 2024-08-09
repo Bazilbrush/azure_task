@@ -4,7 +4,7 @@ resource "azurerm_resource_group" "azure_task_primary" {
 }
 
 resource "azurerm_linux_virtual_machine" "primary" {
-  name                = "primary_${terraform.workspace}"
+  name                = "primary-${terraform.workspace}"
   resource_group_name = azurerm_resource_group.azure_task_primary.name
   location            = azurerm_resource_group.azure_task_primary.location
   size                = "Standard_F2"
