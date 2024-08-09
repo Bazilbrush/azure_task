@@ -57,7 +57,7 @@ resource "azurerm_network_security_rule" "allow_http_https_out" {
 }
 resource "azurerm_network_security_rule" "allow_dns_out" {
   name                        = "allow_outbound"
-  priority                    = 99
+  priority                    = 101
   direction                   = "Outbound"
   access                      = "Allow"
   protocol                    = "Udp"
@@ -70,7 +70,7 @@ resource "azurerm_network_security_rule" "allow_dns_out" {
 }
 resource "azurerm_network_security_rule" "allow_ssh_jack" {
   name                        = "allow_ssh_jack"
-  priority                    = 100
+  priority                    = 102
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
