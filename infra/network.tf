@@ -43,7 +43,7 @@ resource "azurerm_subnet_network_security_group_association" "primary" {
 }
 
 resource "azurerm_network_security_rule" "allow_http_https_out" {
-  name                        = "allow_outbound"
+  name                        = "allow_http_https_out"
   priority                    = 100
   direction                   = "Outbound"
   access                      = "Allow"
@@ -56,7 +56,7 @@ resource "azurerm_network_security_rule" "allow_http_https_out" {
   network_security_group_name = azurerm_network_security_group.primary.name
 }
 resource "azurerm_network_security_rule" "allow_dns_out" {
-  name                        = "allow_outbound"
+  name                        = "allow_dns_out"
   priority                    = 101
   direction                   = "Outbound"
   access                      = "Allow"
