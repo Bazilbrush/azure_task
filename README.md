@@ -1,26 +1,21 @@
-# azure_task
-We do not expect a “polished” solution. Try not to spend more than 1 hour to write the code and
-ensure you show how you approach the challenge and design a solution. If you want to, include a
-readme.md to explain how you’d evolve and improve the design, include testing, deploy the solution
-and so on. 
-Terraform: 
-Create two Azure VMs in three environments (test, staging, production), ensure that: 
+I took the liberty to create a deployment pipeline (it was easier to test this way) that splits out the separate environments in separate stages.
+Having separate stages can ensure a deployment can go through quality gates before production infra is amended. 
 
  each VM is provisioned in a dedicated resource group. X
  each VM only allows incoming traffic from SSH. Outbound of DNS, HTTP, HTTPS X
  There is some form of backup strategy implemented. x
  the resources are protected from accidental deletion. x
 
-There are different ways to structure and run the project. 
-To simplify the task and focus on your
-terraform code skills, have one &quot;.tfstate&quot; file,
- and three variables (one per environment) in a single
-&quot;.tfvars&quot; file which will describe all your ASBNs in each environment. 
-(Add your variables to a single
-“.tfvars” file (one per environment). 
-This should describe your VM per environment). 
-Feel free to replace VM with any other resource of your choice, preferably an Azure resource.
- We expect you to demonstrate your ability to use nested data structures, therefore make sure you have
-a root-level resource and a number of nested resources (and no dynamic blocks). 
-Please provide a zip of your code, or a link to a git repository that can be accessed by us (we can
-provide a GitHub user to add to private repositories on GitHub).
+
+"We expect you to demonstrate your ability to use nested data structures, therefore make sure you have
+a root-level resource and a number of nested resources (and no dynamic blocks). " - Does wrapping things in a module count?
+
+
+Things that can be improved:
+
+1. naming convetion
+2. tidy up the tagging as it's not present in cases
+3. some resources could be shared (depends on the purpose of this deployment) 
+4. sort out the networking and the IP ranges, maybe the user should be able to set them
+5. module should export the IPs of the instances for interop with ansible or other provisioning tools
+6. user set vm image

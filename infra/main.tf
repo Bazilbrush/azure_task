@@ -30,13 +30,13 @@ locals {
 module "linuxserver_1" {
   source              = "./modules/vm"
   name                = "primary"
-  deletion_protection = false
+  deletion_protection = true
   tags                = local.default_tags
 }
 
 module "linuxserver_2" {
   source              = "./modules/vm"
   name                = "secondary"
-  deletion_protection = false
+  deletion_protection = true
   tags                = local.default_tags
 }
