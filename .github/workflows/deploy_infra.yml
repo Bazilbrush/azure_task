@@ -37,50 +37,32 @@ jobs:
             ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
             INFRACOST_API_KEY: ${{ secrets.INFRACOST_API_KEY }}
 
-    terraform-apply:
-        uses: Bazilbrush/terraform-templates/.github/workflows/terraform-apply.yml@main
-        if: ${{ always() }}
-        needs: terraform-plan
-        with:
-            tfpath: infra
-            backend-platform: azure
-            TF_ENV: test
-            AZ_RG_NAME: backend
-            AZ_STORAGE_ACC: backendthni7
-            AZ_STORAGE_CONTAINER: backend
-            BACKEND_KEY: tests/azure_task/basic.tfstate
-        secrets:
-            ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-            ARM_CLIENT_SECRET:  ${{ secrets.ARM_CLIENT_SECRET }}
-            ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-            ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-        
-    terraform-plan-destroy:
-        uses: Bazilbrush/terraform-templates/.github/workflows/terraform-destroy-plan.yml@main
-        if: ${{ always() }}
-        needs: terraform-apply
-        with:
-            tfpath: infra
-            backend-platform: azure
-            TF_ENV: test
-            AZ_RG_NAME: backend
-            AZ_STORAGE_ACC: backendthni7
-            AZ_STORAGE_CONTAINER: backend
-            BACKEND_KEY: tests/azure_task/basic.tfstate
-        secrets:
-            ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-            ARM_CLIENT_SECRET:  ${{ secrets.ARM_CLIENT_SECRET }}
-            ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-            ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+    # terraform-apply:
+    #     uses: Bazilbrush/terraform-templates/.github/workflows/terraform-apply.yml@main
+    #     if: ${{ always() }}
+    #     needs: terraform-plan
+    #     with:
+    #         tfpath: infra
+    #         backend-platform: azure
+    #         TF_ENV: test
+    #         AZ_RG_NAME: backend
+    #         AZ_STORAGE_ACC: backendthni7
+    #         AZ_STORAGE_CONTAINER: backend
+    #         BACKEND_KEY: tests/azure_task/basic.tfstate
+    #     secrets:
+    #         ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+    #         ARM_CLIENT_SECRET:  ${{ secrets.ARM_CLIENT_SECRET }}
+    #         ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+    #         ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
 
-    terraform-destroy:
-        uses: Bazilbrush/terraform-templates/.github/workflows/terraform-destroy.yml@main
+    terraform-plan:
+        uses: Bazilbrush/terraform-templates/.github/workflows/terraform-plan.yml@main
         if: ${{ always() }}
-        needs: terraform-plan-destroy
+        needs: terraform-validate
         with:
             tfpath: infra
             backend-platform: azure
-            TF_ENV: test
+            TF_ENV: stage
             AZ_RG_NAME: backend
             AZ_STORAGE_ACC: backendthni7
             AZ_STORAGE_CONTAINER: backend
@@ -90,3 +72,59 @@ jobs:
             ARM_CLIENT_SECRET:  ${{ secrets.ARM_CLIENT_SECRET }}
             ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
             ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+            INFRACOST_API_KEY: ${{ secrets.INFRACOST_API_KEY }}
+
+    terraform-plan:
+        uses: Bazilbrush/terraform-templates/.github/workflows/terraform-plan.yml@main
+        if: ${{ always() }}
+        needs: terraform-validate
+        with:
+            tfpath: infra
+            backend-platform: azure
+            TF_ENV: prod
+            AZ_RG_NAME: backend
+            AZ_STORAGE_ACC: backendthni7
+            AZ_STORAGE_CONTAINER: backend
+            BACKEND_KEY: tests/azure_task/basic.tfstate
+        secrets:
+            ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+            ARM_CLIENT_SECRET:  ${{ secrets.ARM_CLIENT_SECRET }}
+            ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+            ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+            INFRACOST_API_KEY: ${{ secrets.INFRACOST_API_KEY }}
+        
+    # terraform-plan-destroy:
+    #     uses: Bazilbrush/terraform-templates/.github/workflows/terraform-destroy-plan.yml@main
+    #     if: ${{ always() }}
+    #     needs: terraform-apply
+    #     with:
+    #         tfpath: infra
+    #         backend-platform: azure
+    #         TF_ENV: test
+    #         AZ_RG_NAME: backend
+    #         AZ_STORAGE_ACC: backendthni7
+    #         AZ_STORAGE_CONTAINER: backend
+    #         BACKEND_KEY: tests/azure_task/basic.tfstate
+    #     secrets:
+    #         ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+    #         ARM_CLIENT_SECRET:  ${{ secrets.ARM_CLIENT_SECRET }}
+    #         ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+    #         ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+
+    # terraform-destroy:
+    #     uses: Bazilbrush/terraform-templates/.github/workflows/terraform-destroy.yml@main
+    #     if: ${{ always() }}
+    #     needs: terraform-plan-destroy
+    #     with:
+    #         tfpath: infra
+    #         backend-platform: azure
+    #         TF_ENV: test
+    #         AZ_RG_NAME: backend
+    #         AZ_STORAGE_ACC: backendthni7
+    #         AZ_STORAGE_CONTAINER: backend
+    #         BACKEND_KEY: tests/azure_task/basic.tfstate
+    #     secrets:
+    #         ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+    #         ARM_CLIENT_SECRET:  ${{ secrets.ARM_CLIENT_SECRET }}
+    #         ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+    #         ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}

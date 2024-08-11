@@ -8,15 +8,19 @@ Create two Azure VMs in three environments (test, staging, production), ensure t
 
  each VM is provisioned in a dedicated resource group. X
  each VM only allows incoming traffic from SSH. Outbound of DNS, HTTP, HTTPS X
- There is some form of backup strategy implemented.
- the resources are protected from accidental deletion. 
+ There is some form of backup strategy implemented. x
+ the resources are protected from accidental deletion. x
 
-There are different ways to structure and run the project. To simplify the task and focus on your
-terraform code skills, have one &quot;.tfstate&quot; file, and three variables (one per environment) in a single
-&quot;.tfvars&quot; file which will describe all your ASBNs in each environment. (Add your variables to a single
-“.tfvars” file (one per environment). This should describe your VM per environment). 
-Feel free to replace VM with any other resource of your choice, preferably an Azure resource. We
-expect you to demonstrate your ability to use nested data structures, therefore make sure you have
+There are different ways to structure and run the project. 
+To simplify the task and focus on your
+terraform code skills, have one &quot;.tfstate&quot; file,
+ and three variables (one per environment) in a single
+&quot;.tfvars&quot; file which will describe all your ASBNs in each environment. 
+(Add your variables to a single
+“.tfvars” file (one per environment). 
+This should describe your VM per environment). 
+Feel free to replace VM with any other resource of your choice, preferably an Azure resource.
+ We expect you to demonstrate your ability to use nested data structures, therefore make sure you have
 a root-level resource and a number of nested resources (and no dynamic blocks). 
 Please provide a zip of your code, or a link to a git repository that can be accessed by us (we can
 provide a GitHub user to add to private repositories on GitHub).
