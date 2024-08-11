@@ -28,7 +28,7 @@ locals {
 }
 
 module "linuxservers" {
-  source              = "modules/vm"
+  source              = "./modules/vm"
   tags                = local.default_tags
  
 }
