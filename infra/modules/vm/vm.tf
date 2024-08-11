@@ -33,3 +33,12 @@ resource "azurerm_linux_virtual_machine" "primary" {
   tags = var.tags
 }
 
+
+
+resource "azurerm_management_lock" "del_protection" {
+  count              = var.deletion_protection ? 1 : 0
+  name               = "${var.name}-lock-${terraform.workspace}"
+  scope              = azurerm_linux_virtual_machine.primary.id
+  lock_level         = "CanNotDelete" 
+  notes              = "This lock protects the VM from accidental deletion."
+}
