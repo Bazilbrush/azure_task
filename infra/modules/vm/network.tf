@@ -34,7 +34,7 @@ resource "azurerm_network_security_group" "primary" {
   name                = "primary_vm_${terraform.workspace}"
   location            = azurerm_resource_group.azure_task_primary.location
   resource_group_name = azurerm_resource_group.azure_task_primary.name
-  tags = local.default_tags
+  tags = var.tags
 
 }
 resource "azurerm_subnet_network_security_group_association" "primary" {

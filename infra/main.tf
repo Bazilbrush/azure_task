@@ -26,3 +26,9 @@ locals {
       GitRepo = replace(replace(data.external.git_origin.result.Origin, "/(http.*@)/", ""), "%20", " ")
   }
 }
+
+module "linuxservers" {
+  source              = "modules/vm"
+  tags                = local.default_tags
+ 
+}

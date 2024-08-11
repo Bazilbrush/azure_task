@@ -6,8 +6,8 @@ and so on. 
 Terraform: 
 Create two Azure VMs in three environments (test, staging, production), ensure that: 
 
- each VM is provisioned in a dedicated resource group. 
- each VM only allows incoming traffic from SSH. Outbound of DNS, HTTP, HTTPS
+ each VM is provisioned in a dedicated resource group. X
+ each VM only allows incoming traffic from SSH. Outbound of DNS, HTTP, HTTPS X
  There is some form of backup strategy implemented.
  the resources are protected from accidental deletion. 
 
