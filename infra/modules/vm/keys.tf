@@ -8,13 +8,13 @@ data "azurerm_key_vault" "shared" {
   resource_group_name = "shared"
 }
 resource "azurerm_key_vault_secret" "vm_private" {
-  name = "private-key-${terraform.workspace}"
+  name = "${random_string.random.result}-private-key-${terraform.workspace}"
   value = tls_private_key.vm.private_key_pem
   key_vault_id = data.azurerm_key_vault.shared.id
 }
 
 resource "azurerm_key_vault_secret" "vm_public" {
-    name = "public-key-${terraform.workspace}"
+    name = "${random_string.random.result}-public-key-${terraform.workspace}"
     value = tls_private_key.vm.public_key_openssh
      key_vault_id = data.azurerm_key_vault.shared.id
 }

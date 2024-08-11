@@ -27,8 +27,14 @@ locals {
   }
 }
 
-module "linuxservers" {
+module "linuxserver_1" {
   source              = "./modules/vm"
+  name                = "primary"
   tags                = local.default_tags
- 
 }
+
+# module "linuxserver_2" {
+#   source              = "./modules/vm"
+#   name                = "secondary"
+#   tags                = local.default_tags
+# }
