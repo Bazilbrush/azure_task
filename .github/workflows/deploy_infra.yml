@@ -18,7 +18,7 @@ jobs:
         with:
             tfpath: infra
     
-    terraform-plan:
+    terraform-plan-test:
         uses: Bazilbrush/terraform-templates/.github/workflows/terraform-plan.yml@main
         if: ${{ always() }}
         needs: terraform-validate
@@ -37,7 +37,7 @@ jobs:
             ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
             INFRACOST_API_KEY: ${{ secrets.INFRACOST_API_KEY }}
 
-    # terraform-apply:
+    # terraform-apply-test:
     #     uses: Bazilbrush/terraform-templates/.github/workflows/terraform-apply.yml@main
     #     if: ${{ always() }}
     #     needs: terraform-plan
@@ -55,7 +55,7 @@ jobs:
     #         ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
     #         ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
 
-    terraform-plan:
+    terraform-plan-stage:
         uses: Bazilbrush/terraform-templates/.github/workflows/terraform-plan.yml@main
         if: ${{ always() }}
         needs: terraform-validate
@@ -74,7 +74,7 @@ jobs:
             ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
             INFRACOST_API_KEY: ${{ secrets.INFRACOST_API_KEY }}
 
-    terraform-plan:
+    terraform-plan-prod:
         uses: Bazilbrush/terraform-templates/.github/workflows/terraform-plan.yml@main
         if: ${{ always() }}
         needs: terraform-validate
